@@ -6,8 +6,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/KummerCompany/jwt/config"
-	"github.com/KummerCompany/jwt/models"
+	"github.com/KummerCompany/jwt/src/config"
+	"github.com/KummerCompany/jwt/src/models"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/valyala/fasthttp"
