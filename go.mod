@@ -1,4 +1,4 @@
-module jwt
+module github.com/KummerCompany/jwt
 
 go 1.15
 
