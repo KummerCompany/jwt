@@ -13,7 +13,11 @@ import (
 	"github.com/valyala/fasthttp"
 )
 
-// CreateToken is function that return encrypt claims with a private key
+// CreateToken is function that return encrypt claims with a private key.
+//
+// Encript with HS256
+//
+// This function return string that encode json as { Data: { your data }, Exp: Expire time }
 func CreateToken(data interface{}) (string, error) {
 
 	claims := models.Token{
@@ -42,8 +46,9 @@ func extractToken(r *fasthttp.Request) string {
 	return ""
 }
 
-// MetadataToken extract bear information from header and transform en token struct
-func MetadataToken(r *fasthttp.Request) (jwt.MapClaims, error) {
+// MetadataToken extract bear information from header and transform en token struct.
+// This struct return only the Data. In other word whit return your interface
+func MetadataToken(r *fasthttp.Request) (map[string]interface{}, error) {
 	tokenString := extractToken(r)
 
 	claims := jwt.MapClaims{}
@@ -65,5 +70,5 @@ func MetadataToken(r *fasthttp.Request) (jwt.MapClaims, error) {
 		return claims, fmt.Errorf("Token timed out")
 	}
 
-	return claims, err
+	return claims["Data"].(map[string]interface{}), err
 }
