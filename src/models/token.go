@@ -4,8 +4,8 @@ import "github.com/dgrijalva/jwt-go"
 
 // Token of API
 type Token struct {
-	Data interface{}
-	Exp  string `json:"exp"`
+	Data interface{} `json:"data"`
+	Exp  string      `json:"exp"`
 	jwt.StandardClaims
 }
 
